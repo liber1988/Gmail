@@ -1,0 +1,140 @@
+.email-button {
+  display: grid;
+  grid-template-columns: minmax(100px, 140px) minmax(140px, 1fr);
+  grid-template-areas:
+    "sender subject"
+    "sender preview";
+  column-gap: 16px;
+  row-gap: 4px;
+
+  width: 100%;
+  min-height: 72px;
+  padding: 12px 16px;
+
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 0;
+
+  background-color: #ffffff;
+  color: #202124;
+
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    background-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.email-button:hover {
+  background-color: #f5f7f7;
+}
+
+.email-button:active {
+  background-color: #e8eaed;
+}
+
+.email-button:focus-visible {
+  position: relative;
+  z-index: 1;
+
+  outline: 3px solid rgba(26, 115, 232, 0.35);
+  outline-offset: -3px;
+}
+
+.email-button--active {
+  background-color: #e8f0fe;
+  box-shadow: inset 4px 0 0 #1a73e8;
+}
+
+.email-button--active:hover {
+  background-color: #dfe9fb;
+}
+
+.email-button__sender {
+  grid-area: sender;
+
+  min-width: 0;
+
+  font-weight: 600;
+  color: #202124;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.email-button__subject {
+  grid-area: subject;
+
+  min-width: 0;
+
+  font-weight: 500;
+  color: #202124;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.email-button__preview {
+  grid-area: preview;
+
+  min-width: 0;
+
+  color: #5f6368;
+  font-size: 0.9rem;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .email-button {
+    grid-template-columns: minmax(80px, 105px) minmax(0, 1fr);
+    column-gap: 10px;
+
+    min-height: 64px;
+    padding: 10px 12px;
+  }
+
+  .email-button__sender,
+  .email-button__subject {
+    font-size: 0.9rem;
+  }
+
+  .email-button__preview {
+    font-size: 0.82rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .email-button {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "sender"
+      "subject"
+      "preview";
+
+    gap: 3px;
+
+    min-height: 76px;
+    padding: 12px 14px;
+  }
+
+  .email-button__sender {
+    font-size: 0.95rem;
+  }
+
+  .email-button__subject {
+    font-size: 0.9rem;
+  }
+
+  .email-button__preview {
+    font-size: 0.82rem;
+  }
+}

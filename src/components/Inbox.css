@@ -1,0 +1,140 @@
+.inbox {
+  display: flex;
+
+  width: min(1200px, calc(100% - 32px));
+  min-height: 600px;
+  margin: 24px auto;
+
+  overflow: hidden;
+
+  border: 1px solid #dadce0;
+  border-radius: 12px;
+
+  background-color: #ffffff;
+  color: #202124;
+}
+
+.inbox__list {
+  flex: 0 0 360px;
+  min-width: 0;
+
+  overflow-y: auto;
+
+  border-right: 1px solid #dadce0;
+  background-color: #ffffff;
+}
+
+.emails-list {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+}
+
+.inbox__content {
+  flex: 1;
+  min-width: 0;
+
+  padding: 32px;
+
+  overflow-wrap: anywhere;
+  background-color: #ffffff;
+}
+
+.selected-email {
+  width: 100%;
+  max-width: 760px;
+}
+
+.selected-email__sender {
+  margin: 0 0 8px;
+
+  color: #5f6368;
+  font-size: 0.9rem;
+}
+
+.selected-email__subject {
+  margin: 0 0 24px;
+
+  color: #202124;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 500;
+  line-height: 1.25;
+
+  overflow-wrap: anywhere;
+}
+
+.selected-email__message {
+  margin: 0;
+
+  color: #3c4043;
+  font-size: 1rem;
+  line-height: 1.7;
+
+  overflow-wrap: anywhere;
+}
+
+.selected-email--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 300px;
+
+  color: #5f6368;
+  text-align: center;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .inbox {
+    width: calc(100% - 24px);
+    min-height: 520px;
+    margin: 12px auto;
+  }
+
+  .inbox__list {
+    flex-basis: 280px;
+  }
+
+  .inbox__content {
+    padding: 24px;
+  }
+
+  .selected-email__subject {
+    margin-bottom: 18px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .inbox {
+    flex-direction: column;
+
+    width: 100%;
+    min-height: auto;
+    margin: 0;
+
+    border-right: none;
+    border-left: none;
+    border-radius: 0;
+  }
+
+  .inbox__list {
+    flex: none;
+    width: 100%;
+    max-height: none;
+
+    border-right: none;
+    border-bottom: 1px solid #dadce0;
+  }
+
+  .inbox__content {
+    width: 100%;
+    padding: 20px 16px;
+  }
+
+  .selected-email--empty {
+    min-height: 180px;
+  }
+}
