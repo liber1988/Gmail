@@ -1,0 +1,86 @@
+.pages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto 24px;
+}
+
+.pages button {
+  min-width: 44px;
+  height: 40px;
+  padding: 0 16px;
+
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+
+  background-color: #ffffff;
+  color: #3c4043;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.pages button:hover {
+  background-color: #f6f8fc;
+  border-color: #c7c9cc;
+}
+
+.pages button:active {
+  transform: translateY(1px);
+}
+
+.pages button:focus-visible {
+  outline: 2px solid #1a73e8;
+  outline-offset: 2px;
+}
+
+.pages button:disabled {
+  cursor: not-allowed;
+
+  background-color: #f8f9fa;
+  color: #9aa0a6;
+  border-color: #e0e0e0;
+}
+
+.pages button:disabled:hover {
+  background-color: #f8f9fa;
+  border-color: #e0e0e0;
+}
+
+/* Current page button */
+.pages .page-current {
+  border-color: #1a73e8;
+
+  background-color: #e8f0fe;
+  color: #1967d2;
+
+  font-weight: 600;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .pages {
+    width: 100%;
+    gap: 8px;
+    margin: 12px 0 16px;
+    padding: 0 12px;
+  }
+
+  .pages button {
+    flex: 1;
+
+    min-width: 0;
+    padding: 0 10px;
+  }
+}

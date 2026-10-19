@@ -1,6 +1,6 @@
 import Email from "./Email";
 
-const Emails = ({ emails, onSelectEmail, selectedEmailId }) => {
+const Emails = ({ emails, onSelectEmail, selectedEmailId, onDeleteEmail }) => {
   return (
     <div className="emails-list">
       {emails.map((email) => (
@@ -9,6 +9,7 @@ const Emails = ({ emails, onSelectEmail, selectedEmailId }) => {
           email={email}
           onSelectEmail={onSelectEmail}
           isActive={email.id === selectedEmailId}
+          onDeleteEmail={onDeleteEmail}
         />
       ))}
     </div>
