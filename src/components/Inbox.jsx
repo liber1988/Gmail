@@ -19,10 +19,12 @@ const Inbox = () => {
   const page =
     Number.isInteger(pageFromUrl) && pageFromUrl > 0 ? pageFromUrl : 1;
   const [selectedEmail, setSelectedEmail] = useState(null);
-  const [searchText, setSearchtext] = useState("");
 
-  const { emails, isLoading, isFetching, isFetched, error, isPlaceholderData } =
-    useEmails(searchText, page);
+  const searchText = searchParams.get("search") ?? "";
+  const { emails, isLoading, isFetching, error, isPlaceholderData } = useEmails(
+    searchText,
+    page,
+  );
   const setPage = (nextPage) => {
     const resolvedPage =
       typeof nextPage === "function" ? nextPage(page) : nextPage;
@@ -40,8 +42,19 @@ const Inbox = () => {
     });
   };
   const handleSearch = (text) => {
-    setSearchtext(text);
-    setPage(1);
+    setSearchParams((currentParams) => {
+      const newParams = new URLSearchParams(currentParams);
+
+      if (text.length > 0) {
+        newParams.set("search", text);
+      } else {
+        newParams.delete("search");
+      }
+
+      newParams.delete("page");
+
+      return newParams;
+    });
   };
   const deleteMutation = useDeleteEmail();
 
@@ -56,9 +69,9 @@ const Inbox = () => {
     <main>
       <section className="inbox">
         <section className="inbox__list">
-          <SearchElement onSearchText={handleSearch} setPage={setPage} />
+          <SearchElement searchText={searchText} onSearchText={handleSearch} />
 
-          {isLoading && !isFetched ? (
+          {isLoading ? (
             <div className="loading-overlay">
               <FidgetSpinner
                 visible={true}
